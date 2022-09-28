@@ -1,5 +1,7 @@
-import graph_reader as gr
+from graph import Graph
 
 if __name__ == "__main__":
-    graph_example = gr.read_graph_file('./graph_example.txt')
-    print(graph_example)
+	graph_file_path = "./graph_example.txt"
+	graph = Graph(graph_file_path)
+	print(graph.vertices_quantity)
+	print(graph.edges_quantity)
