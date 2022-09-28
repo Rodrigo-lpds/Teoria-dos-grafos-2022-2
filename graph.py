@@ -1,11 +1,9 @@
-import math
-import random
-
+# to do: minimum graph degree, maximum graph degree, mean graph degree and median graph degree
 class Graph: 
 	def __init__(self, file_name):
 		self.file_name = file_name
 
-		self.readed_graph 		= self.read_graph_file()
+		self.readed_graph 			= self.read_graph_file()
 		self.vertices_quantity 	= self.get_vertices_quantity()
 		self.edges_quantity 		= self.get_edges_quantity()
 
