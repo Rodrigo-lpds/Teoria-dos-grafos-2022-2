@@ -41,8 +41,8 @@ class AdjMatriz:
 class BuildAdjMatriz:
     def __init__(self, graph):
         self.graph = graph
-        self.vertex_qty = int(self.graph.vertices_quantity) + 1
-        self.adj_matriz = AdjMatriz(self.vertex_qty)
+        self.vertices_qty = int(self.graph.vertices_quantity) + 1
+        self.adj_matriz = AdjMatriz(self.vertices_qty)
         self.fill_adj_matriz()
 
     def fill_adj_matriz(self):
