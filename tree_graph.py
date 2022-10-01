@@ -20,7 +20,7 @@ class TreeGraph:
         """
 		Insert a Vertex in the tree
 		"""
-        node = VertexNode(vertex, dad, nivel)
+        node = TreeNode(vertex, dad, nivel)
         self.vertices_in_tree[vertex-1] = True
         self.tree_graph.update({vertex: node})
     
@@ -29,7 +29,7 @@ class TreeGraph:
             value.print_node()
 
 
-class VertexNode:
+class TreeNode:
     def __init__(self, vertex, dad, nivel):
         self.vertex = vertex
         self.dad = dad
