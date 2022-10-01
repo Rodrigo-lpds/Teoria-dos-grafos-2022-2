@@ -13,16 +13,26 @@ class Graph:
 		"""
 		with open(self.file_name, 'r') as file:
 			return file.read().splitlines()
+	
+	def get_edges_array(self):
+		"""
+		Returns a matriz with all edges of the graph. Example of output: [[1,2], [1,3], [3,2]]
+		"""
+		edges = []
+		for line in self.readed_graph[1:]:
+			line = line.split(' ')
+			edges.append([int(line[0]), int(line[1])])
+		return edges
 
 
 	def get_vertices_quantity(self): 
 		"""
-		Returns the vertices of the graph.
+		Returns the vertices quantity of the graph.
 		"""
 		return int(self.readed_graph[0].rstrip("\n"))
 
 	def get_edges_quantity(self):
 		"""
-		Returns the edges of the graph.
+		Returns the edges quantity of the graph.
 		"""
 		return len(self.readed_graph) - 1	
