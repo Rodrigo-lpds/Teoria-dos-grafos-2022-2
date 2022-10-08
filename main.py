@@ -19,8 +19,5 @@ if __name__ == "__main__":
 	tree_graph_bfs = BuildBFS(graph,bfs_input)
 	tree_graph_bfs.represent_tree()
 
-	connected_components = ConnectedComponentes(graph)
-	connected_components.represent_components()
-
 
 
