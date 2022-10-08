@@ -4,7 +4,7 @@ class BuildBFS:
     def __init__(self, graph, root):
         self.graph = graph
         self.root = root
-        self.tree = TreeGraph(self.root, int(self.graph.vertices_quantity))
+        self.tree = TreeGraph(self.root)
         self.build_tree()
     
     """

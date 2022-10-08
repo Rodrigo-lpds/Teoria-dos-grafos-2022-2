@@ -36,40 +36,27 @@ class Graph:
 
 	def build_nodes_graph(self):
 		"""
-		Build a dictionary of Nodes from the graph 
+		Build a dictionary of Nodes (unexplored) from the graph 
 		"""
 		edges = self.get_edges_array()
 		self.nodes_graph = {}
-		vertices_in_graph = [False] * self.vertices_quantity
-		node0 = Node(None)
-		node1 = Node(None)
+		node0 = Node(None, False)
+		node1 = Node(None, False)
 		for edge in edges:
-			index = edge[0]-1
-			if(not vertices_in_graph[index]):
-				vertices_in_graph[index] = True
-				node0 = Node(edge[0])
+			if(self.nodes_graph.get(edge[0]) is None):
+				node0 = Node(edge[0], False)
 				self.nodes_graph.update({edge[0]: node0})
 			else:
 				node0 = self.nodes_graph.get(edge[0])
 
-			index = edge[1]-1
-			if(not vertices_in_graph[index]):
-				vertices_in_graph[index] = True
-				node1 = Node(edge[1])
+			if(self.nodes_graph.get(edge[1]) is None):
+				node1 = Node(edge[1], False)
 				self.nodes_graph.update({edge[1]: node1})
 			else:
 				node1 = self.nodes_graph.get(edge[1])
 
 			node0.add_neighbor(node1)
 			node1.add_neighbor(node0)
-	
-	"""
-	def debug_nodes_graph(self):
-		for vertex in self.nodes_graph.values():
-			print('vertex:',vertex.name)
-			print(vertex.get_neighbors_names())
-	"""
-
 			
 
 	def get_vertices_quantity(self): 
@@ -84,11 +71,19 @@ class Graph:
 		"""
 		return len(self.readed_graph) - 1	
 
+
 class Node:
-	def __init__(self, name):
+	def __init__(self, name, is_explored):
 		self.name = name
+		self.explored = is_explored
 		self.neighbors_node = []
 		self.neighbors_name = []
+
+	def get_name(self):
+		return self.name
+
+	def set_uncovered(self, is_explored):
+		self.explored = is_explored
 
 	def add_neighbor(self, vertex):
 		self.neighbors_node.append(vertex)

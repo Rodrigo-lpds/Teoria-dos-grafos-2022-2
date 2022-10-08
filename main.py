@@ -1,3 +1,4 @@
+from connected_components import ConnectedComponentes
 from graph import Graph
 from adjascency_list import BuildAdjList
 from adjascency_matriz import BuildAdjMatriz
@@ -17,5 +18,9 @@ if __name__ == "__main__":
 	#bfs_input = int(input("BFS root: "))
 	tree_graph_bfs = BuildBFS(graph,bfs_input)
 	tree_graph_bfs.represent_tree()
+
+	connected_components = ConnectedComponentes(graph)
+	connected_components.represent_components()
+
 
 
