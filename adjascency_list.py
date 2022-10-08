@@ -31,6 +31,7 @@ class AdjList:
 					temp = temp.next
 				print(" \n")
 
+
 class BuildAdjList:
 	def __init__(self, graph):
 		self.graph = graph
@@ -43,3 +44,10 @@ class BuildAdjList:
 			self.graph_adj_list_rep.add_edge(int(line[0]), int(line[1]))
 			
 		self.graph_adj_list_rep.print_agraph()
+	
+	def graph_nodes(self):
+		nodes = []
+		for vertex in range(self.V):
+			nodes.append(vertex)
+		
+		return nodes
