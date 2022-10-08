@@ -1,10 +1,10 @@
 from tree_graph import TreeGraph
 
-class BuildBFS:
+class BuildDFS:
     def __init__(self, graph, root):
         self.graph = graph
         self.root = root
-        self.tree = TreeGraph(self.root)
+        self.tree = TreeGraph(self.root, int(self.graph.vertices_quantity))
         self.build_tree()
     
     """
@@ -25,20 +25,19 @@ class BuildBFS:
     def build_tree(self):
         nodes_graph = self.graph.get_nodes_graph()
         queue = [self.root]
-        while(len(queue)>0):
+        explored_vertices = []
+        count = 0
+        while(len(queue) > 0):
             currentVertex = queue.pop(0)
             currentNode = nodes_graph.get(currentVertex)
-            for neighbor in currentNode.get_neighbors_names():
-                if(self.tree.add_vertex_node(neighbor, currentVertex)):
+            if currentVertex not in explored_vertices:
+                explored_vertices.append(currentVertex)
+                for neighbor in currentNode.get_neighbors_names():
+                    self.tree.add_vertex_node(neighbor, currentVertex)
                     queue.append(neighbor)
-
 
 
     def represent_tree(self):
         self.tree.print_tree()
 
-    def distance_between_vertex(self, vertex):
-        self.tree.distance_between_vertex(vertex)
-    
-    def shortest_longest_path(self):
-        return self.tree.shortest_longest_path()
+
