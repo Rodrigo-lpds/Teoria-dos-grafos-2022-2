@@ -37,4 +37,8 @@ class BuildBFS:
     def represent_tree(self):
         self.tree.print_tree()
 
-
+    def distance_between_vertex(self, vertex):
+        self.tree.distance_between_vertex(vertex)
+    
+    def shortest_longest_path(self):
+        self.tree.shortest_longest_path()

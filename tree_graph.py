@@ -27,6 +27,14 @@ class TreeGraph:
     def print_tree(self):
         for value in self.tree_graph.values():
             value.print_node()
+    
+    def distance_between_vertex(self, vertex):
+        distance = self.tree_graph[vertex].nivel
+        print("distance:", distance)
+    
+    def shortest_longest_path(self):
+        last_explored_node = list(self.tree_graph.keys())[-1]
+        distance = self.tree_graph[last_explored_node].nivel
 
 
 class TreeNode:
