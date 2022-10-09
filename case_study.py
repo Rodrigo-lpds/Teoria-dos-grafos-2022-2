@@ -29,11 +29,11 @@ class CaseStudy:
 		return diameter
 	
 	def bfs_search(self, node_input):
-		tree = BuildBFS(graph,self.node_input)
+		tree = BuildBFS(self.graph, node_input)
 		tree.represent_tree()
 	
 	def dfs_search(self, node_input):
-		tree = BuildDFS(graph,node_input)
+		tree = BuildDFS(self.graph, node_input)
 		tree.represent_tree()
 	
 	def connected_components(self):
