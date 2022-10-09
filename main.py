@@ -1,41 +1,43 @@
-from graph import Graph
-from adjascency_list import BuildAdjList
-from adjascency_matriz import BuildAdjMatriz
-from tree_graph_bfs import BuildBFS
-from tree_graph_dfs import BuildDFS
-from connected_components import ConnectedComponentes
-
-def get_graph_diameter(graph):
-		diameter = 0
-		for node in nodes:
-			#print(node)
-			tree_graph_bfs = BuildBFS(graph,node+1)
-			longest_path = tree_graph_bfs.shortest_longest_path()
-			if diameter < longest_path:
-				diameter = longest_path
-		
-		print("diameter: ",diameter)
+import time
+from case_study import CaseStudy
 
 if __name__ == "__main__":
-	graph_file_path = "./graph_example.txt"
-	graph = Graph(graph_file_path)
+	graph_file_path = "./graph_files/graph_example.txt"
+	graph = CaseStudy(graph_file_path)
 	
-	graph_adj_list_rep = BuildAdjList(graph)
-	graph_adj_list_rep.represent_graph()
-	nodes = graph_adj_list_rep.graph_nodes()
-	graph_adj_matriz_rep = BuildAdjMatriz(graph)
-	graph_adj_matriz_rep.represent_graph()
-	diameter = get_graph_diameter(graph)
+	# (1) check memory usage
+	start_time = time.time()
+	graph.adjascency_list_representation()
+	print("--- %s seconds ---" % (time.time() - start_time))
+	start_time = time.time()
+	graph.adjascency_matrix_representation()
+	print("--- %s seconds ---" % (time.time() - start_time))
+	# -------------------------------------------------------
 
-	connected_components = ConnectedComponentes(graph)
-	connected_components.represent_components()
+	# (2) 1000 bfs searchs using matrix representation and list representation
 
-	node_input = 1
-	#bfs_input = int(input("BFS root: "))
-	tree_graph_bfs = BuildBFS(graph,node_input)
-	tree_graph_bfs.represent_tree()
-	tree_graph_bfs.distance_between_vertex(5)
-	tree_graph_bfs.shortest_longest_path()
+	# ----------------------------------------------------
+
+	# (3) 1000 dfs searchs using matrix representation and list representation
+
+	# ----------------------------------------------------
+
+	# (4) Determine the father of the 10,20, and 30 nodes of the graph using vertices 1,2 3 as starting points
+
+	# 4.1 Using BFS search
+
+	# 4.2 Using DFS search
 	
-	tree_graph_dfs = BuildDFS(graph,node_input)
-	tree_graph_dfs.represent_tree()
+	# ----------------------------------------------------
+
+	# (5) Determine the distance between nodes (10,20), (10,30), (20,30) (we gonna use BFS search)
+
+	# ----------------------------------------------------
+
+	# (6) Find all connected components of given graph. Return how many connected components,
+	#  the length of the largest connected components and the length of the smallest
+
+	# ----------------------------------------------------
+
+
+	# (7) Determine the graph diameter of given graph
