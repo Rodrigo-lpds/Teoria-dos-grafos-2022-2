@@ -6,16 +6,18 @@ if __name__ == "__main__":
 	graph = CaseStudy(graph_file_path)
 	
 	# (1) check memory usage
-	start_time = time.time()
+	""" start_time = time.time()
 	graph.adjascency_list_representation()
 	print("--- %s seconds ---" % (time.time() - start_time))
 	start_time = time.time()
 	graph.adjascency_matrix_representation()
-	print("--- %s seconds ---" % (time.time() - start_time))
+	print("--- %s seconds ---" % (time.time() - start_time)) """
 	# -------------------------------------------------------
 
 	# (2) 1000 bfs searchs using matrix representation and list representation
-
+	start_time = time.time()
+	graph.bfs_search(1)
+	print("--- %s seconds ---" % (time.time() - start_time))
 	# ----------------------------------------------------
 
 	# (3) 1000 dfs searchs using matrix representation and list representation

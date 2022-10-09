@@ -6,28 +6,15 @@ class BuildBFS:
         self.root = root
         self.tree = TreeGraph(self.root)
         self.build_tree()
-    
-    """
-    def build_tree(self):
-        edges = self.graph.get_edges_array()
-        queue = [self.root]
-        while(len(queue)>0):
-            currentVertex = queue.pop(0)
-            for edge in edges:
-                if(edge[0] == currentVertex):
-                    if(self.tree.add_vertex_node(edge[1], currentVertex)):
-                        queue.append(edge[1])
-                if(edge[1] == currentVertex):
-                    if(self.tree.add_vertex_node(edge[0], currentVertex)):
-                        queue.append(edge[0])
-    """
 
     def build_tree(self):
-        nodes_graph = self.graph.get_nodes_graph()
+        nodes_graph = self.graph.get_nodes_graph() # use graph representation instead
         queue = [self.root]
-        while(len(queue)>0):
+        while(len(queue) > 0):
+            print(queue)
             currentVertex = queue.pop(0)
-            currentNode = nodes_graph.get(currentVertex)
+            
+            currentNode = nodes_graph.get(currentVertex) # use graph representation instead
             for neighbor in currentNode.get_neighbors_names():
                 if(self.tree.add_vertex_node(neighbor, currentVertex)):
                     queue.append(neighbor)
