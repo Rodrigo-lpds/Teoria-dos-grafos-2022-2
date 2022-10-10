@@ -1,6 +1,8 @@
 from adjascency_matrix import AdjascencyMatrix
 from adjascency_list import AdjascencyList
 from bfs import BuildBFS
+from dfs import BuildDFS
+import time
 
 if __name__ == "__main__":
 	graph_file_path = "../graph_files/graph_example.txt"
@@ -12,5 +14,8 @@ if __name__ == "__main__":
 	#print(list_rep.node_neighbors(1))
  
 	tree = BuildBFS(list_rep, 1)
+	tree.represent_tree()
+ 
+	tree = BuildDFS(list_rep, 1)
 	tree.represent_tree()
   
