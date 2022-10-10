@@ -4,13 +4,10 @@ from adjascency_list import AdjascencyList
 from bfs import BuildBFS
 from dfs import BuildDFS
 from connected_components import ConnectedComponentes
+from graph_info_output import GraphInfoOutput
 
 if __name__ == "__main__":
-	graph_file_path = "../graph_files/grafo_4.txt"
- 
-	#tree = BuildDFS(list_rep, 1)
-	#tree.represent_tree()
- 
+	graph_file_path = "../graph_files/grafo_5.txt"
  	# (1) check memory usage
  	# matrix = AdjascencyMatrix(graph_file_path)
 	# list_rep = AdjascencyList(graph_file_path)
@@ -86,3 +83,9 @@ if __name__ == "__main__":
 
 	# (7) Determine the graph diameter of given graph
   
+	# -------------------------------
+ 
+	# Build graph output
+	""" list_rep = AdjascencyList(graph_file_path)
+	output = GraphInfoOutput(list_rep)
+	output.build_file("output_grafo_5.txt") """

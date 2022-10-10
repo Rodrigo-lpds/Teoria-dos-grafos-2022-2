@@ -29,6 +29,13 @@ class AdjascencyList:
 		node.next = self.list[d]
 		self.list[d] = node
 
+	def node_list(self):
+		nodes = []
+		for node in self.list:
+			if node is not None:
+				nodes.append(self.list.index(node))
+		return nodes
+
 	def node_neighbors(self, node):
 		neighbors = []
 		#self.list[node]

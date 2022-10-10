@@ -2,7 +2,7 @@ class Graph:
 	def __init__(self, file_name):
 		self.file_name = file_name
 		self.readed_graph = self.read_graph_file()
-		self.vertices_quantity = self.vertices_quantity() + 1
+		self.vertices_quantity = self.vertices_qty() + 1
 		self.edges = self.edges_array()
 
 	def read_graph_file(self):
@@ -12,7 +12,7 @@ class Graph:
 		with open(self.file_name, 'r') as file:
 			return file.read().splitlines()
     
-	def vertices_quantity(self):
+	def vertices_qty(self):
 			"""
 			Returns the vertices quantity of the graph.
 			"""
