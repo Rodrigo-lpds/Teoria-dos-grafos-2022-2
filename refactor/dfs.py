@@ -8,15 +8,15 @@ class BuildDFS:
         self.build_tree()
 
     def build_tree(self):
-        queue = [self.root]
+        stack = [self.root]
         explored_vertices = []
-        while(len(queue) > 0):
-            currentVertex = queue.pop(0)
+        while(len(stack) > 0):
+            currentVertex = stack.pop(0)
             if currentVertex not in explored_vertices:
                 explored_vertices.append(currentVertex)
                 for neighbor in self.graph.node_neighbors(currentVertex):
                     self.tree.add_vertex_node(neighbor, currentVertex)
-                    queue.append(neighbor)
+                    stack.append(neighbor)
 
 
     def represent_tree(self):
