@@ -48,6 +48,6 @@ class AdjascencyList:
 
 	def node_degree(self, node):
 		""" 
-				It's the same as the quantity of node's edges
+			 	It's the same as the quantity of node's edges
 		"""
 		return len(self.node_neighbors(node))
