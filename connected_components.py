@@ -19,12 +19,15 @@ class ConnectedComponentes:
                 component_index = len(self.components) - 1
                 self.explore_node(node, component_index)
 
-    def explore_node(self, node, component_index):
-        node.explored = True
-        self.components[component_index].append(node)
-        for neighbor in node.get_neighbors_nodes():
-            if(neighbor.explored is False):
-                self.explore_node(neighbor, component_index)
+    def explore_node(self, root, component_index):
+        queue = [root]
+        while(len(queue)>0):
+            new_node = queue.pop(0)
+            for neighbor in new_node.get_neighbors_nodes():
+                if(neighbor.explored is False):
+                    neighbor.explored = True
+                    self.components[component_index].append(neighbor)
+                    queue.append(neighbor)
     
     
     def represent_components(self):
