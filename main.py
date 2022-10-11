@@ -1,4 +1,5 @@
 import time
+import random
 from adjascency_matrix import AdjascencyMatrix
 from adjascency_list import AdjascencyList
 from bfs import BuildBFS
@@ -7,14 +8,18 @@ from connected_components import ConnectedComponentes
 from graph_info_output import GraphInfoOutput
 
 if __name__ == "__main__":
-	graph_file_path = "./graph_files/graph_example.txt"
+	graph_file_path = "./graph_files/grafo_2.txt"
  	# (1) check memory usage
  	# matrix = AdjascencyMatrix(graph_file_path)
-	# list_rep = AdjascencyList(graph_file_path)
+	list_rep = AdjascencyList(graph_file_path)
+	node_list = list_rep.node_list()
+	print(random.choices(node_list,k=50))
 	# -------------------------------------------------------
 
 	# (2) 1000 bfs searchs using matrix representation and list representation
 	#start_time = time.time()
+	selected_nodes = [905, 799, 452, 555, 499, 700, 781, 218, 502, 393, 472, 578, 505, 106, 358, 106, 325, 839, 483, 763, 932, 191, 273, 12, 963, 48, 264, 564, 512, 146, 173, 886, 95, 435, 774, 376, 850, 830, 605, 710, 265, 790, 147, 167, 633, 899, 50, 239, 481, 155]
+
 	#matrix = AdjascencyMatrix(graph_file_path)
 	#list_rep = AdjascencyList(graph_file_path)
 	#tree = BuildBFS(matrix, 1)
@@ -78,9 +83,9 @@ if __name__ == "__main__":
 
 	# (6) Find all connected components of given graph. Return how many connected components,
 	#  the length of the largest connected components and the length of the smallest
-	list_rep = AdjascencyList(graph_file_path)
+	""" list_rep = AdjascencyList(graph_file_path)
 	connected_components = ConnectedComponentes(list_rep)
-	connected_components.represent_components()
+	connected_components.represent_components() """
 	# ----------------------------------------------------
 
 
