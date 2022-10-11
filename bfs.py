@@ -23,5 +23,8 @@ class BuildBFS:
     def distance_between_vertex(self, vertex):
         self.tree.distance_between_vertex(vertex)
     
-    def shortest_longest_path(self):
-        return self.tree.shortest_longest_path()
+    def longest_short_path(self):
+        return self.tree.longest_short_path()
+    
+    def last_explored_node(self):
+        return self.tree.last_explored_node()

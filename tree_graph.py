@@ -30,12 +30,14 @@ class TreeGraph:
         distance = self.tree_graph[vertex].nivel
         print("distance:", distance)
     
-    def shortest_longest_path(self):
+    def longest_short_path(self):
         last_explored_node = list(self.tree_graph.keys())[-1]
         distance = self.tree_graph[last_explored_node].nivel
 
         return distance
 
+    def last_explored_node(self):
+        return list(self.tree_graph.keys())[-1]
 
 class TreeNode:
     def __init__(self, vertex, dad, nivel, is_explored):
