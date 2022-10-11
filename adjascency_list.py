@@ -1,53 +1,60 @@
-# Adjascency List representation in Python
+# to do: minimum graph degree, maximum graph degree, mean graph degree and median graph degree
+from tabnanny import verbose
+from graph import Graph
+
 class AdjNode:
 	def __init__(self, value):
 		self.vertex = value
 		self.next = None
+  
+class AdjascencyList:
+	def __init__(self, file_name):
+		self.graph = Graph(file_name)
+		self.list = [None] * self.graph.vertices_quantity
+		self.build_representation()
 
+		#print(self.list[1].next.next)
 
-class AdjList:
-	def __init__(self, num):
-		self.V = num + 1
-		self.graph = [None] * self.V
-
-	# Add edges
+	def build_representation(self):
+		for edge in self.graph.edges:
+			self.add_edge(edge[0], edge[1])
+    
+    # Add edges
 	def add_edge(self, s, d):
 		node = AdjNode(d)
-		node.next = self.graph[s]
-		self.graph[s] = node
+		node.next = self.list[s]
+		self.list[s] = node
 
 		node = AdjNode(s)
-		node.next = self.graph[d]
-		self.graph[d] = node
+		node.next = self.list[d]
+		self.list[d] = node
 
-	# Print the graph
-	def print_agraph(self):
-		for i in range(self.V):
-			temp = self.graph[i]
-			if temp is not None:
-				print("Vertex " + str(i) + ":", end="")
-				while temp:
-					print(" -> {}".format(temp.vertex), end="")
-					temp = temp.next
-				print(" \n")
-
-
-class BuildAdjList:
-	def __init__(self, graph):
-		self.graph = graph
-		self.V = int(self.graph.vertices_quantity)
-		self.graph_adj_list_rep = AdjList(self.V)
-
-	def represent_graph(self):    
-		for line in self.graph.readed_graph[1:]:
-			line = line.split(' ')
-			self.graph_adj_list_rep.add_edge(int(line[0]), int(line[1]))
-			
-		self.graph_adj_list_rep.print_agraph()
-	
-	def graph_nodes(self):
+	def node_list(self):
 		nodes = []
-		for vertex in range(self.V):
-			nodes.append(vertex)
-		
+		for node in self.list:
+			if node is not None:
+				nodes.append(self.list.index(node))
 		return nodes
+
+	def node_neighbors(self, node):
+		neighbors = []
+		#self.list[node]
+		node = self.list[node]
+		node_value = node.vertex
+		next_node = node.next
+		end_of_list = False
+		while(not(end_of_list)):
+			neighbors.append(node_value)
+			if next_node is None:
+				end_of_list = True
+			else:
+				node_value = next_node.vertex
+				next_node = next_node.next
+		
+		return neighbors
+
+	def node_degree(self, node):
+		""" 
+			 	It's the same as the quantity of node's edges
+		"""
+		return len(self.node_neighbors(node))
