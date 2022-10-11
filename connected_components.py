@@ -48,9 +48,4 @@ class ConnectedComponentes:
                 if len(self.components[index]) < len(self.components[index+1]):
                     temp = self.components[index]
                     self.components[index] = self.components[index+1]
-                    self.components[index+1] = temp
-
-
-
-
-
+                    self.components[index+1] = temp     

@@ -1,5 +1,4 @@
-# to do: minimum graph degree, maximum graph degree, mean graph degree and median graph degree
-class Graph: 
+class OldGraph: 
 	def __init__(self, file_name):
 		self.file_name = file_name
 
