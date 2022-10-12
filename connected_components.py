@@ -37,9 +37,9 @@ class ConnectedComponentes:
             vertices_list = []
             index += 1
             print("Size of Component " + str(index) + " : " + str(len(component)))
-            for node in component:
-                vertices_list.append(node.get_name())
-            print("Vertices of Component "+ str(index)+ " : " + str(vertices_list))
+            #for node in component:
+            #    vertices_list.append(node.get_name())
+            #print("Vertices of Component "+ str(index)+ " : " + str(vertices_list))
             print()
 
     def sort_components(self):
