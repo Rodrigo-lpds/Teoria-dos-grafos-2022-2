@@ -36,8 +36,8 @@ class TreeGraph:
 
         return distance
 
-    def last_explored_node(self):
-        return list(self.tree_graph.keys())[-1]
+    def explored_node(self,index):
+        return list(self.tree_graph.keys())[index]
 
 class TreeNode:
     def __init__(self, vertex, dad, nivel, is_explored):

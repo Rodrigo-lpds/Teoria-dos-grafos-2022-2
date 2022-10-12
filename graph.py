@@ -29,4 +29,3 @@ class Graph:
 			line = line.split(' ')
 			edges.append([int(line[0]), int(line[1])])
 		return edges
-        

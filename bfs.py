@@ -26,5 +26,5 @@ class BuildBFS:
     def longest_short_path(self):
         return self.tree.longest_short_path()
     
-    def last_explored_node(self):
-        return self.tree.last_explored_node()
+    def explored_node(self, index):
+        return self.tree.explored_node(index)
