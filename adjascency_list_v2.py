@@ -4,16 +4,18 @@ from tabnanny import verbose
 class AdjNode:
 	def __init__(self, value):
 		self.vertex = value
+		self.cost = 0
 		self.next = None
   
 class AdjascencyListV2:
-	def __init__(self, file_name):
+	def __init__(self, file_name, weighted=False):
 		self.file_name = file_name
+		self.weighted = weighted
 
 		f = open(self.file_name, "r")
-		vertices_quantity = int(f.readline()) + 1
+		self.vertices_quantity = int(f.readline()) + 1
 
-		self.list = [None] * vertices_quantity
+		self.list = [None] * self.vertices_quantity
 		self.build_representation()
 
 
@@ -23,25 +25,31 @@ class AdjascencyListV2:
 			for line in f:
 				if fist_line != True:
 					edge = line.strip().split(' ')
-					self.add_edge(int(edge[0]), int(edge[1]))
+					if self.weighted == True:
+						self.add_edge([int(edge[0]), float(edge[2])], [int(edge[1]), float(edge[2])])
+					else:
+						self.add_edge(int(edge[0]), int(edge[1]))
+
 				else:
 					fist_line = False
 
     # Add edges
 	def add_edge(self, s, d):
 		node = AdjNode(d)
-		node.next = self.list[s]
-		self.list[s] = node
+		node.next = self.list[s[0]]
+		node.cost = d[1]
+		self.list[s[0]] = node
 
 		node = AdjNode(s)
-		node.next = self.list[d]
-		self.list[d] = node
+		node.next = self.list[d[0]]
+		node.cost = d[1]
+		self.list[d[0]] = node
 
-	def node_list(self):
-		nodes = []
+	def vertices(self):
+		nodes = set()
 		for node in self.list:
 			if node is not None:
-				nodes.append(self.list.index(node))
+				nodes.add(self.list.index(node))
 		return nodes
 
 	def node_neighbors(self, node):
@@ -66,3 +74,5 @@ class AdjascencyListV2:
 			 	It's the same as the quantity of node's edges
 		"""
 		return len(self.node_neighbors(node))
+	
+	#def node_cost(self, node):
