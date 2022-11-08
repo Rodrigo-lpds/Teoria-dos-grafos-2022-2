@@ -33,10 +33,8 @@ class Dijkstra:
     return vertex_with_minimum_cost
   
   def iterate_heap(self):
-    distance = heapdict.heapdict()
-    for vertex in range(self.graph.vertices_quantity):
-      distance[vertex] = float('inf')
-    
+    distance = [float('inf')] * self.graph.vertices_quantity
+
     distance[self.s] = 0
 
     priority_queue = heapdict.heapdict()
