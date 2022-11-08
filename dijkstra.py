@@ -39,7 +39,7 @@ class Dijkstra:
     
     distance[self.s] = 0
 
-    priority_queue = heapdict.heapdict();
+    priority_queue = heapdict.heapdict()
     priority_queue[self.s] = 0
 
     V = self.graph.vertices()
