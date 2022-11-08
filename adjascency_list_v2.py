@@ -11,6 +11,7 @@ class AdjascencyListV2:
 	def __init__(self, file_name, weighted=False):
 		self.file_name = file_name
 		self.weighted = weighted
+		self.haveNegativeWeight = False
 
 		f = open(self.file_name, "r")
 		self.vertices_quantity = int(f.readline()) + 1
@@ -27,11 +28,16 @@ class AdjascencyListV2:
 					edge = line.strip().split(' ')
 					if self.weighted == True:
 						self.add_edge([int(edge[0]), float(edge[2])], [int(edge[1]), float(edge[2])])
+						if(float(edge[2])<0):
+							self.haveNegativeWeight = True
 					else:
 						self.add_edge(int(edge[0]), int(edge[1]))
 
 				else:
 					fist_line = False
+
+	def have_negative_weight(self):
+		return self.haveNegativeWeight
 
     # Add edges
 	def add_edge(self, s, d):

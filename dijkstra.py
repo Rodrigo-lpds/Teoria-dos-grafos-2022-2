@@ -8,6 +8,8 @@ class Dijkstra:
     self.s = root
     
   def iterate(self):
+    if(self.verify_graph_have_negative_weight()):
+      return 
     distance = [float('inf')] * self.graph.vertices_quantity
     V = self.graph.vertices()
     S = set()
@@ -32,7 +34,15 @@ class Dijkstra:
     
     return vertex_with_minimum_cost
   
+  def verify_graph_have_negative_weight(self):
+    if(self.graph.have_negative_weight):
+      print("This graph have edges with negative weigth, so, we can't use Dijkstra.")
+      return True
+    return False 
+
   def iterate_heap(self):
+    if(self.verify_graph_have_negative_weight):
+      return
     distance = [float('inf')] * self.graph.vertices_quantity
 
     distance[self.s] = 0
