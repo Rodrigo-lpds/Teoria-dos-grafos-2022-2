@@ -6,6 +6,7 @@ class FordFulkerson:
 
     def ford_fulkerson(self, graph, source, sink):
         # Initialize the flow network with 0 flow on each edge
+        #print(len(graph))
         flow = copy.deepcopy(graph)
         for u in graph:
             for v in graph[u]:
@@ -32,18 +33,20 @@ class FordFulkerson:
     def find_augmenting_path(self, graph, flow, source, sink):
         # Initialize the search queue with the source node
         queue = [source]
-        visited = set()
+        visited = [0] * (len(graph) + 2)
+        #visited = set()
         path = []
 
         while queue:
             # Pop the first node from the queue
             u = queue.pop(0)
-            visited.add(u)
-
+            #visited.add(u)
+            visited[u] = 1 # 0 not visited, 1 to visited
             # For each neighbor of the node
             for v in graph[u]:
                 # If the neighbor has not been visited and there is residual capacity on the edge
-                if v not in visited and graph[u][v] - flow[u][v] > 0:
+                #if v not in visited and graph[u][v] - flow[u][v] > 0:
+                if visited[v] == 0 and graph[u][v] - flow[u][v] > 0:
                     # Add the neighbor to the queue and update the path
                     queue.append(v)
                     path.append((u, v))

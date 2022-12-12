@@ -8,11 +8,11 @@ class AdjascencyListFulkerson:
             self.initGraph(f)
 
     # Function to add edges
-    def addEdge(self, u, v):
-        if u not in self.adj:
-            self.adj[u] = {v[0]: v[1]}
+    def addEdge(self, origin, destination, flow):
+        if origin not in self.adj:
+            self.adj[origin] = {destination: flow}
         else:
-            self.adj[u].update({v[0]: v[1]})
+            self.adj[origin].update({destination: flow})
 
     # Function to initialize the adjacency list
     # of the given graph
@@ -23,4 +23,7 @@ class AdjascencyListFulkerson:
                 fist_line = False
             else:
                 edge = line.strip().split(' ')
-                self.addEdge(int(edge[0]), [int(edge[1]), float(edge[2])])
+                origin_vertex = int(edge[0])
+                destination_vertex = int(edge[1])
+                flow = float(edge[2])
+                self.addEdge(origin_vertex, destination_vertex, flow)

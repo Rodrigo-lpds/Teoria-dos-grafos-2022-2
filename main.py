@@ -13,7 +13,10 @@ from dijkstra import Dijkstra
 from ford_fulkerson import FordFulkerson
 
 if __name__ == "__main__":
-	graph_file_path = "./graph_files/grafo_rf_8.txt"
+	graph_file_path = "./graph_files/grafo_rf_2.txt"
+	#grafo rf 8 levou 2726.827 segundos e o resultado deu 5377510.0
+	# o grado rf 7 levou 53.343 segundos e o resultado deu 611
+	#
  	# (1) check memory usage
 	#matrix = AdjascencyMatrix(graph_file_path)
 	#list_rep = AdjascencyList(graph_file_path)
