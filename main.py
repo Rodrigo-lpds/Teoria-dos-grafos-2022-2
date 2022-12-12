@@ -3,42 +3,50 @@ import random
 from adjascency_matrix import AdjascencyMatrix
 from adjascency_list import AdjascencyList
 from adjascency_list_v2 import AdjascencyListV2
+from adjascency_list_fulkerson import AdjascencyListFulkerson
 from bfs import BuildBFS
 from dfs import BuildDFS
 from connected_components import ConnectedComponentes
 from graph_info_output import GraphInfoOutput
 from old_graph import OldGraph
 from dijkstra import Dijkstra
+from ford_fulkerson import FordFulkerson
 
 if __name__ == "__main__":
-	graph_file_path = "./graph_files/rede_colaboracao.txt"
+	graph_file_path = "./graph_files/grafo_rf_8.txt"
  	# (1) check memory usage
 	#matrix = AdjascencyMatrix(graph_file_path)
-	#start_time = time.time()
 	#list_rep = AdjascencyList(graph_file_path)
-	#print("--- %s seconds ---" % (time.time() - start_time))
 	#f = open("./graph_files/grafo_2.txt", "r")
 	#print(f.readline())
-	list_rep = AdjascencyListV2(graph_file_path, weighted = True)
+	#start_time = time.time()
+	#list_rep = AdjascencyListV2(graph_file_path, weighted = True)
+	#print("--- %s seconds ---" % (time.time() - start_time))
+	start_time = time.time()
+	list_rep_new = AdjascencyListFulkerson(graph_file_path)
+	#print(list_rep_new.adj)
+	ff = FordFulkerson(list_rep_new.adj,1,2)
+	print("--- %s seconds ---" % (time.time() - start_time))
+	print(ff.max_flow)
 	#print(list_rep.list[2].vertex)
-	node = 2722
+	#node = 10
 	#nodes = [2,12,234,876,1832,28,58,100,16,1229]
 	#start_time = time.time()
 	#for node in nodes:
-	dijkstra = Dijkstra(list_rep, node)
+	#dijkstra = Dijkstra(list_rep, node)
 	#dijkstra.iterate()
-	dijkstra_distance = dijkstra.iterate_heap()
+	#dijkstra_distance = dijkstra.iterate_heap()
+	#print("--- %s seconds ---" % (time.time() - start_time))
 	#print("The distance between node", node, "and node 20 is ", dijkstra_distance[20])
 	#print("The distance between node", node, "and node 30 is ", dijkstra_distance[30])
 	#print("The distance between node", node, "and node 40 is ", dijkstra_distance[40])
 	#print("The distance between node", node, "and node 50 is ", dijkstra_distance[50])
 	#print("The distance between node", node, "and node 60 is ", dijkstra_distance[60])
-	#print("--- %s seconds ---" % (time.time() - start_time))
-	print("The distance between node", node, "and node 11365 is ", dijkstra_distance[11365])
-	print("The distance between node", node, "and node 471365 is ", dijkstra_distance[471365])
-	print("The distance between node", node, "and node 5709 is ", dijkstra_distance[5709])
-	print("The distance between node", node, "and node 11386 is ", dijkstra_distance[11386])
-	print("The distance between node", node, "and node 343930 is ", dijkstra_distance[343930])
+	#print("The distance between node", node, "and node 11365 is ", dijkstra_distance[11365])
+	#print("The distance between node", node, "and node 471365 is ", dijkstra_distance[471365])
+	#print("The distance between node", node, "and node 5709 is ", dijkstra_distance[5709])
+	#print("The distance between node", node, "and node 11386 is ", dijkstra_distance[11386])
+	#print("The distance between node", node, "and node 343930 is ", dijkstra_distance[343930])
 	# -------------------------------------------------------
 
 	# (2) 1000 bfs searchs using matrix representation and list representation
